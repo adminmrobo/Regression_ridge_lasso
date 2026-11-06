@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><!-- i18n:switcher --><style data-i18n-sw>.i18n-pick{display:inline-flex;align-items:center;gap:4px;margin:0 8px;font:inherit;font-size:13px;white-space:nowrap}.i18n-pick select{font:inherit;font-size:13px;padding:3px 6px;border-radius:8px;border:1px solid var(--rule,rgba(128,128,128,.5));background:var(--panel,Canvas);color:var(--text,CanvasText)}.i18n-pick.float{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:max(8px,env(safe-area-inset-right,0px));z-index:9998}#i18nBanner{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:9999;font:14px/1.3 var(--font,system-ui,sans-serif)}#i18nBanner>button{border-radius:999px;padding:9px 14px;border:1px solid var(--rule,#363a52);background:var(--panel,#1c1e2d);color:var(--text,#eceaf3);box-shadow:0 4px 14px rgba(0,0,0,.35);cursor:pointer;font:inherit}#i18nBanner ul{position:absolute;right:0;bottom:calc(100% + 8px);margin:0;padding:6px;list-style:none;min-width:150px;border-radius:12px;border:1px solid var(--rule,#363a52);background:var(--panel,#1c1e2d);box-shadow:0 8px 24px rgba(0,0,0,.4)}#i18nBanner ul[hidden]{display:none}#i18nBanner a{display:block;padding:7px 10px;border-radius:8px;color:var(--text,#eceaf3);text-decoration:none}#i18nBanner a:hover,#i18nBanner a:focus-visible{background:var(--panel2,#25283a)}#i18nBanner a[aria-current]{color:var(--amber,#f1b646);font-weight:700}@media print{#i18nBanner,.i18n-pick{display:none!important}}</style><script data-i18n-skip>(function(){var C={"langs": [["ko", "한국어"], ["en", "English"], ["zh", "中文"], ["ja", "日本語"], ["uz", "Oʻzbekcha"], ["ru", "Русский"], ["vi", "Tiếng Việt"]], "urls": {"ko": "index.html", "en": "index.en.html", "zh": "index.zh.html", "ja": "index.ja.html", "uz": "index.uz.html", "ru": "index.ru.html", "vi": "index.vi.html"}, "cur": "ko", "auto": true, "key": "rg_index_lang", "hosts": [["#langSw", "append"], ["nav.top .logo", "after"], ["nav.top", "append"], ["nav", "append"]], "banner": true, "select": true},cur=C.cur,ok={},de=document.documentElement;C.langs.forEach(function(l){ok[l[0]]=1});
+function U(l){return C.urls[l]}
+function save(l){try{localStorage.setItem(C.key,l)}catch(e){}}
+function saved(){try{return localStorage.getItem(C.key)}catch(e){return null}}
+function go(l){location.replace(U(l)+'?lang='+l+location.hash)}
+var shown=function(){de.style.visibility=''};
+function tryGo(l){if(location.protocol==='file:'){go(l);return}
+ de.style.visibility='hidden';var t=setTimeout(shown,2500);
+ try{fetch(U(l),{method:'HEAD',cache:'no-store'}).then(function(r){if(r.ok)go(l);else{clearTimeout(t);shown()}},function(){clearTimeout(t);shown()})}catch(e){clearTimeout(t);shown()}}
+var q=null;try{q=new URLSearchParams(location.search).get('lang')}catch(e){}
+if(q&&ok[q]){save(q);if(q!==cur){tryGo(q);}}
+else if(cur==='ko'&&C.auto){var s=saved(),to=null;
+ if(s&&ok[s]){if(s!=='ko')to=s;}
+ else if(location.protocol!=='file:'){var same=false;try{same=!!document.referrer&&new URL(document.referrer).origin===location.origin}catch(e){}
+  if(!same){var nav=(navigator.languages||[navigator.language||'']).map(function(x){return String(x).slice(0,2).toLowerCase()});
+   for(var i=0;i<nav.length;i++){if(nav[i]==='ko')break;if(ok[nav[i]]){to=nav[i];break;}}}}
+ if(to)tryGo(to);}
+function pick(l){save(l);location.href=U(l)+'?lang='+l+location.hash;}
+function name(l){for(var i=0;i<C.langs.length;i++)if(C.langs[i][0]===l)return C.langs[i][1];return l}
+function mount(){if(document.getElementById('i18nSel'))return;
+ if(C.select){var w=document.createElement('span');w.className='i18n-pick';w.innerHTML='<span aria-hidden="true">🌐</span>';
+  var s=document.createElement('select');s.id='i18nSel';s.setAttribute('aria-label','Language');
+  C.langs.forEach(function(l){var o=document.createElement('option');o.value=l[0];o.textContent=l[1];if(l[0]===cur)o.selected=true;s.appendChild(o);});
+  s.addEventListener('change',function(){pick(s.value)});w.appendChild(s);var put=false;
+  for(var i=0;i<C.hosts.length&&!put;i++){var h=document.querySelector(C.hosts[i][0]);if(!h)continue;var m=C.hosts[i][1];
+   if(m==='after')h.insertAdjacentElement('afterend',w);else if(m==='before')h.insertAdjacentElement('beforebegin',w);else h.appendChild(w);put=true;}
+  if(!put){w.classList.add('float');document.body.appendChild(w);}}
+ if(C.banner&&!document.getElementById('i18nBanner')){var b=document.createElement('div');b.id='i18nBanner';
+  var bt=document.createElement('button');bt.type='button';bt.setAttribute('aria-haspopup','true');bt.setAttribute('aria-expanded','false');bt.textContent='🌐 '+name(cur);
+  var ul=document.createElement('ul');ul.hidden=true;ul.setAttribute('role','menu');
+  C.langs.forEach(function(l){var li=document.createElement('li'),a=document.createElement('a');a.href=U(l[0])+'?lang='+l[0];a.textContent=l[1];a.lang=l[0];a.setAttribute('role','menuitem');
+   if(l[0]===cur)a.setAttribute('aria-current','true');a.addEventListener('click',function(e){e.preventDefault();pick(l[0])});li.appendChild(a);ul.appendChild(li);});
+  function close(){ul.hidden=true;bt.setAttribute('aria-expanded','false')}
+  bt.addEventListener('click',function(e){e.stopPropagation();ul.hidden=!ul.hidden;bt.setAttribute('aria-expanded',String(!ul.hidden))});
+  document.addEventListener('click',function(e){if(!b.contains(e.target))close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){close();bt.focus&&!ul.hidden&&bt.focus()}});
+  b.appendChild(ul);b.appendChild(bt);document.body.appendChild(b);}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();})();</script><!-- /i18n:switcher -->
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>릿지와 라쏘 · 목차</title>
+<meta name="description" content="농어 56마리로 과적합과 릿지·라쏘, 교차 검증으로 alpha 고르기를 직접 만져 보는 인터랙티브 해설. 박사·조수(하루)·초파리 연구원·주판봇이 진행합니다.">
+<meta name="author" content="안상선">
+<meta property="og:title" content="릿지와 라쏘 — 농어 무게로 배우는 과적합 막기">
+<meta property="og:description" content="특성 55개 기본 회귀의 테스트 R² −4.39를 릿지·라쏘로 0.97까지 되살리는 과정을 직접 만져 보는 해설">
+<meta property="og:image" content="https://adminmrobo.github.io/Regression_ridge_lasso/og_rg.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#13141f;--panel:#1c1e2d;--panel2:#25283a;--rule:#363a52;--text:#eceaf3;--muted:#9d9bb8;
+  --gfp:#5ee39c;--stain:#d672d6;--amber:#f1b646;--eye:#f0604d;--info:#82b8ff;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 "IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;word-break:keep-all;overflow-wrap:break-word}
+a{color:var(--info)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+nav.top{position:sticky;top:0;z-index:50;height:54px;display:flex;align-items:center;gap:14px;padding:0 16px;background:rgba(19,20,31,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav.top::-webkit-scrollbar{display:none}
+nav.top .logo{font-weight:700;color:var(--text);text-decoration:none}
+nav.top a{color:var(--muted);text-decoration:none;font-size:14px}
+.cover{position:relative;width:100%;margin:0;background:linear-gradient(160deg,#1b1533,#13141f);aspect-ratio:16/9;max-height:72vh;overflow:hidden;border-bottom:1px solid var(--rule)}
+.cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.cover-chip{position:absolute;left:16px;bottom:14px;padding:4px 10px;border-radius:999px;background:rgba(19,20,31,.72);font-size:13px}
+@media (max-width:600px){.cover{max-height:none}.cover-chip{font-size:11px;padding:2px 8px;top:8px;bottom:auto;left:8px}}
+header.intro{padding:40px 0 24px}
+.eyebrow{font-size:13px;color:var(--muted)}
+h1{font-size:clamp(30px,5vw,50px);line-height:1.2;margin:.25em 0 .35em}
+h2{font-size:clamp(22px,3vw,30px);margin:0 0 .5em}
+.lead{font-size:18px;max-width:720px}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0}
+.kpi{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi span{font-size:13px;color:var(--muted)}
+.kpi.g b{color:var(--gfp)}.kpi.m b{color:var(--stain)}.kpi.a b{color:var(--amber)}
+section{padding:32px 0;border-top:1px solid var(--rule)}
+.card{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:18px;background:var(--panel);border:1px solid var(--rule);border-radius:18px;overflow:hidden;text-decoration:none;color:var(--text)}
+.card:hover{border-color:var(--gfp)}
+.card img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:3/2}
+.card .body{padding:16px 18px 18px 0}
+.card .no{font-size:13px;color:var(--gfp);font-weight:700}
+.card h3{margin:.2em 0 .4em;font-size:21px;line-height:1.35}
+.card p{margin:.3em 0;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tags span{font-size:12px;border:1px solid var(--rule);border-radius:999px;padding:2px 10px;color:var(--muted)}
+.go{display:inline-block;margin-top:12px;background:var(--gfp);color:#10221a;font-weight:700;border-radius:999px;padding:6px 16px;font-size:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.box{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:14px 16px}
+.box h3{margin:.1em 0 .4em;font-size:16px;color:var(--amber)}
+.box ul{margin:.2em 0;padding-left:1.2em}
+.cast{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.cast span{font-size:13px;background:var(--panel2);border-radius:999px;padding:3px 12px}
+footer{padding:32px 0 80px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule)}
+@media (max-width:760px){.card{grid-template-columns:1fr}.card .body{padding:0 16px 18px}.grid2{grid-template-columns:1fr}}
+@media (max-width:460px){.kpis{grid-template-columns:repeat(2,1fr)}}
+</style>
+<link rel="alternate" hreflang="ko" href="index.html"><link rel="alternate" hreflang="en" href="index.en.html"><link rel="alternate" hreflang="zh-CN" href="index.zh.html"><link rel="alternate" hreflang="ja" href="index.ja.html"><link rel="alternate" hreflang="uz" href="index.uz.html"><link rel="alternate" hreflang="ru" href="index.ru.html"><link rel="alternate" hreflang="vi" href="index.vi.html"><link rel="alternate" hreflang="x-default" href="index.html">
+</head>
+<body>
+<nav class="top" aria-label="바로가기">
+  <a class="logo" href="#top">🔬 AI 연구실</a>
+  <a href="#list">편 목록</a><a href="#inside">들어 있는 것</a><a href="#source">데이터와 출처</a>
+</nav>
+
+<!-- lab-cover -->
+<header class="cover" id="top" data-img="cover_index">
+  <img src="cover_index.webp" onerror="this.onerror=null;this.style.objectPosition='50% 88%';this.src='hero_rg.webp'" width="1600" height="900" alt="밤의 연구실에서 박사·조수(하루)·초파리 연구원·주판봇이 저울 위 농어와 여행 가방을 둘러싼 시리즈 표지" fetchpriority="high" decoding="async">
+  <span class="cover-chip">AI 연구실 해설 대시보드 · 규제 회귀</span>
+</header>
+<!-- /lab-cover -->
+
+<div class="wrap">
+<header class="intro">
+  <div class="eyebrow">AI 연구실 해설 대시보드 · 규제 회귀 · 글 안상선</div>
+  <h1>릿지와 라쏘<br>농어 무게로 배우는 과적합 막기</h1>
+  <p class="lead">특성을 많이 만들어도, 처음 보는 농어의 무게를 잘 맞힐 수 있을까? 농어 56마리의 길이·높이·폭으로 무게를 예측하며, 특성을 늘릴 때 생기는 과적합과 이를 막는 릿지·라쏘, 그리고 alpha를 고르는 교차 검증을 브라우저에서 직접 만져 봅니다.</p>
+  <div class="kpis">
+    <div class="kpi g"><b>56</b><span>농어 (훈련 42 · 테스트 14)</span></div>
+    <div class="kpi m"><b>−4.39 → 0.97</b><span>특성 55개, 규제 전 → 후 테스트 R²</span></div>
+    <div class="kpi a"><b>7</b><span>언어로 읽기</span></div>
+  </div>
+</header>
+
+<section id="list">
+  <h2>편 목록</h2>
+  <a class="card" href="RG_ridge_lasso.html">
+    <img src="thumb_rg.webp" width="600" height="400" alt="밤의 연구실 계량대에서 초파리 연구원·박사·조수(하루)·주판봇이 저울 위 농어를 바라보는 장면" loading="lazy" decoding="async">
+    <div class="body">
+      <div class="no">실습 미션 · 규제 회귀</div>
+      <h3>릿지와 라쏘 — 농어 무게로 배우는 과적합 막기</h3>
+      <p>기본 회귀에서 특성 55개까지 늘려 과적합을 보고, 릿지·라쏘로 계수를 묶은 뒤, 교차 검증으로 alpha를 고릅니다. 마지막은 "특성 55개 그대로 vs 릿지" 대결.</p>
+      <div class="tags"><span>과적합</span><span>다항 특성</span><span>릿지 (L2)</span><span>라쏘 (L1)</span><span>교차 검증</span><span>alpha</span></div>
+      <span class="go">해설 열기 →</span>
+    </div>
+  </a>
+</section>
+
+<section id="inside">
+  <h2>들어 있는 것</h2>
+  <div class="grid2">
+    <div class="box"><h3>해설 페이지</h3><ul><li>지령 → 기본 회귀 → 특성 늘리기 → 릿지 → 라쏘 → alpha 고르기 → 대결</li><li>슬라이더로 degree·alpha를 바꾸며 예측선·계수·테스트 점수가 바로 바뀌는 실습</li><li>확인 퀴즈, 용어 말풍선, 비유 모음, 교육자를 위한 TIP</li></ul></div>
+    <div class="box"><h3>가져갈 수 있는 것</h3><ul><li>Colab 코드 2개: 페이지 숫자를 그대로 재현 (복사 · .py · .ipynb)</li><li>지식 색인과 꾸러미: JSON-LD, Turtle, CSV, BibTeX, RIS</li><li>7개 언어: 한국어, English, 中文, 日本語, Oʻzbekcha, Русский, Tiếng Việt</li></ul></div>
+  </div>
+  <div class="box" style="margin-top:12px"><h3>진행하는 캐릭터</h3>
+    <div class="cast"><span>박사 — 해설과 심판</span><span>조수(하루) — 실험과 숫자</span><span>초파리 연구원 — 의심하는 쪽</span><span>주판봇 — 크게 거는 쪽</span></div></div>
+</section>
+
+<section id="source">
+  <h2>데이터와 출처</h2>
+  <p>농어 데이터: 박해선, 『혼자 공부하는 머신러닝+딥러닝』 개정판(한빛미디어, 2025)의 실습 데이터, <a href="https://github.com/rickiepark/hg-mldl">rickiepark/hg-mldl</a> perch_full.csv</p><p>Hoerl, A. E. &amp; Kennard, R. W. (1970). Ridge Regression. <i>Technometrics</i> 12(1). <a href="https://doi.org/10.2307/1267351">doi:10.2307/1267351</a></p><p>Tibshirani, R. (1996). Regression Shrinkage and Selection via the Lasso. <i>JRSS B</i> 58(1), 267–288. <a href="https://doi.org/10.1111/j.2517-6161.1996.tb02080.x">doi:10.1111/j.2517-6161.1996.tb02080.x</a></p>
+  <p class="eyebrow">페이지의 모든 점수·계수는 페이지 안 Colab 코드(scikit-learn 1.9.1)를 실행한 값입니다.</p>
+</section>
+</div>
+
+<footer>
+<div class="wrap">
+  <p>글 · 안상선 ((주)M-Robo 대표) · <a href="https://adminmrobo.github.io/who_am_i/who_am_i.html">저자 소개</a> · 이 저장소: <a href="https://creativecommons.org/licenses/by-nc/4.0/deed.ko">CC BY-NC 4.0</a></p>
+  <p>캐릭터 그림: 박사·조수(하루)·초파리 연구원·주판봇 — <a href="https://adminmrobo.github.io/fruitfly-lab-expressions/">fruitfly-lab-expressions</a>, © 안상선</p>
+</div>
+</footer>
+</body>
+</html>
