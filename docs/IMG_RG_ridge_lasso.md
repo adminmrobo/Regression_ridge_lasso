@@ -15,10 +15,10 @@
 | 그림이 없을 때 | 페이지는 캐릭터 팩 표정, CSS 벌집 배경, 픽셀 캔버스(저울·농어·가방)로 이미 완성 상태 |
 
 ## 1. 그림체와 고정 외형
-- 스타일: SKILL 18-3 (16비트 SNES 시대 픽셀 아트, 굵은 외곽선, 디더링 음영)
+- 스타일: SKILL 18-3 (16비트 RPG 픽셀 아트, 굵은 어두운 외곽선, 2~3단 음영, 작은 하이라이트)
 - 캐릭터 고정 외형: SKILL 18-4 표 그대로 (공식 저장소 `CHARACTER_CORE_EN`)
-- 이 페이지 장소: 밤의 연구실 한쪽 계량대. 큰 바늘 저울 위에 농어 한 마리, 옆에 반쯤 열린 여행 가방(짐이 눌려 담긴 쪽과 꺼내 둔 짐 몇 개), 뒤쪽 칠판은 빈칸. 보라 조명이 왼쪽에서 들어옴.
-- 장소 영어 묘사: *a weighing corner inside the same night lab world, a large dial scale with a single green-striped perch fish lying on its tray, a half-open travel suitcase beside it with some items packed tightly and a few items set aside on the floor, a blank chalkboard in the back, purple lab light spilling in from the left*
+- 이 페이지 장소: 낮의 연구실 한쪽 계량대. 큰 바늘 저울 위에 농어 한 마리, 옆에 반쯤 열린 여행 가방(짐이 눌려 담긴 쪽과 꺼내 둔 짐 몇 개), 뒤쪽 칠판은 비어 있음. 왼쪽 큰 창에서 햇빛이 들어옴.
+- 장소 영어 묘사: *a weighing corner inside the same bright daytime lab world, a large dial scale with a single green-striped perch fish lying on its tray, a half-open travel suitcase beside it with some items packed tightly and a few items set aside on the floor, a blank chalkboard in the back, soft sunlight coming in from a large window on the left*
 
 ## 2. 필요한 그림 전체
 
@@ -45,27 +45,27 @@
 | 19 | og_rg | K | 1200×630 | 넣음 (파일) | 직접 (히어로 화면 캡처 합성) | P3 | 공유 미리보기 (이 HTML 밖) | 없음 |
 | — | 행동으로 보기 (농어 저울, 5조각 카드), 히어로 픽셀 소품 | — | — | 코드 | 직접 | — | Canvas 2D | — |
 
-컷(G판)은 넣지 않음: 사다리 다섯 칸이 모두 인터랙티브 도식으로 개념을 보여 주고 있어, 장면 컷이 더할 정보가 적다고 판단함(R5는 "보여 줄 때만").
+컷(G판)은 넣지 않음: 실습 다섯 개가 모두 인터랙티브 도식으로 개념을 보여 주고 있어, 장면 컷이 더할 정보가 적다고 판단함(R5는 "보여 줄 때만").
 
 ## 3. 새로 그릴 그림 상세
 
-### 3-1. `bg_rg` — 밤의 연구실 계량대
+### 3-1. `bg_rg` — 낮의 연구실 계량대
 | 항목 | 내용 |
 |---|---|
 | 판 · 크기 | F · 1920×720 (8:3, 정수배 가능) |
 | 제작 경로 | 외부: Genspark |
 | 배경 | 그림 전체 |
-| 구도 | 왼쪽 45%는 어둡고 단순(제목 글자 자리). 오른쪽에 저울과 가방, 빛은 저울 위 농어에 모임 |
+| 구도 | 왼쪽 45%는 밝고 단순(제목 글자 자리). 오른쪽에 저울과 가방, 빛은 저울 위 농어에 모임 |
 | 표정·몸짓 | 인물 없음 |
 | 소품 | 바늘 저울, 농어, 여행 가방, 꺼내 둔 짐 2~3개, 빈 칠판, 시험관 선반 (글자 없음) |
 | 빛·분위기 | 남보라 어둠, 왼쪽 보라 조명, 모니터의 청록 빛, 시험관의 분홍·초록 형광 점 |
 | 피할 것 | 글자·숫자 눈금, 실존 브랜드 가방, 생물 해부·현미경 소품 (생물 앵커 아님) |
-| 대체 글 (alt) | 밤의 연구실 계량대, 저울 위 농어와 여행 가방이 놓여 있음 |
+| 대체 글 (alt) | 낮의 연구실 계량대, 저울 위 농어와 여행 가방이 놓여 있음 |
 | 대신 쓰는 그림 | CSS 그라데이션 + 벌집 무늬 |
 
 **프롬프트 (복사해서 사용)**
 ```
-detailed 16-bit SNES-era pixel art, limited palette, crisp pixels, dithering shading, thick dark outlines, cheerful comedy mood, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, wide 8:3 background, left side simple and calm for title text, details on the right, a weighing corner inside the same night lab world, a large dial scale with a single green-striped perch fish lying on its tray, a half-open travel suitcase beside it with some items packed tightly and a few items set aside on the floor, a blank chalkboard in the back, a test tube rack with tiny magenta and green glowing vials, purple lab light spilling in from the left, warm light focused on the fish on the scale, no characters, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
+16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, cheerful comedy mood, consistent with the reference images, bright daytime laboratory mood, soft natural sunlight through large windows, clean white walls, light lavender, mint and pink accents, wide 8:3 background, left side simple and calm for title text, details on the right, a weighing corner inside the same bright daytime lab world, a large dial scale with a single green-striped perch fish lying on its tray, a half-open travel suitcase beside it with some items packed tightly and a few items set aside on the floor, a blank chalkboard in the back, a test tube rack with small lavender and mint vials, soft sunlight coming in from a large window on the left, light focused on the fish on the scale, no characters, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
 ```
 
 ### 3-2. `sc_rg_hero` — 네 캐릭터가 저울 위 농어를 바라봄
@@ -77,14 +77,14 @@ detailed 16-bit SNES-era pixel art, limited palette, crisp pixels, dithering sha
 | 구도 | 가운데 뒤 저울과 농어. 왼쪽 초파리 연구원이 오른쪽을 보며 가리킴, 오른쪽 주판봇이 왼쪽을 보며 주판알을 반짝임, 박사는 가운데 뒤에서 턱에 손, 하루는 옆에서 빈 줄무늬 장부를 듦. 중요한 것은 위쪽 62% 안 |
 | 표정·몸짓 | doc_think, fly_point, robo_coin, asst_smile (18-5 사전) |
 | 소품 | 저울, 농어, 여행 가방, 빈 장부 (글자 없음) |
-| 빛·분위기 | 밤의 연구실, 저울 위 농어에 빛이 모임 |
+| 빛·분위기 | 낮의 연구실, 저울 위 농어에 빛이 모임 |
 | 피할 것 | 승패 암시 표정(결과 전 장면), 글자, 회사 캐릭터 Money-Robo의 특징(흰 둥근 머리·노란 눈·부유·금화) |
-| 대체 글 (alt) | 밤의 연구실에서 네 캐릭터가 저울 위 농어와 여행 가방을 바라보는 장면 |
+| 대체 글 (alt) | 낮의 연구실에서 네 캐릭터가 저울 위 농어와 여행 가방을 바라보는 장면 |
 | 대신 쓰는 그림 | 팩 캐릭터 + 픽셀 캔버스 합성 무대 |
 
 **프롬프트 (복사해서 사용)**
 ```
-detailed 16-bit SNES-era pixel art, limited palette, crisp pixels, dithering shading, thick dark outlines, cheerful comedy mood, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, a weighing corner inside the same night lab world with a large dial scale holding a single green-striped perch fish and a half-open travel suitcase beside it; the Professor, a chibi male scientist with a big head, dark charcoal spiky hair with a white streak at the front, a small low ponytail at the back, very thick bold black eyebrows, teal-framed rectangular glasses, light peach skin, white lab coat over a black vest, black tie and black slacks, standing at the back center with a hand on his chin and a small question mark; the Fruit Fly, a tiny expressive cartoon fruit fly researcher with a dark charcoal-black segmented insect body, large glossy red compound eyes, a retro dark blue helmet with a yellow-white center stripe and small round side bolts, colorful dangling cables in magenta, purple and blue curving from the back of the helmet, a tiny white lab coat over a black vest, translucent veined wings, six thin black legs with the front pair used like hands, on the left looking right and pointing at the fish with a suspicious look; JUPANBOT (AbaBot), a boxy beige retro CRT-monitor robot with a dark green screen face showing mint pixel eyes and mouth, a short antenna topped with a red-brown abacus bead, gray segmented arms and two small tank treads, on the right looking left with a sly grin, holding up a shiny abacus bead beside a small wooden abacus; Haru, a cute anime girl lab assistant, long straight pink hair with navy blue streaks including a thick navy streak down the center of the bangs, two round messy hair buns on top of the head, a small ahoge, big bright blue eyes, light peach skin, wearing a lavender hoodie with white drawstrings over a white t-shirt, under an open white knee-length lab coat, at the side holding a blank striped ledger with a calm small smile, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
+16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, cheerful comedy mood, consistent with the reference images, bright daytime laboratory mood, soft natural sunlight through large windows, clean white walls, light lavender, mint and pink accents, 3:2 landscape scene, medium brightness, a weighing corner inside the same bright daytime lab world with a large dial scale holding a single green-striped perch fish and a half-open travel suitcase beside it; the Professor, a chibi male scientist with a big head, dark charcoal spiky hair with a white streak at the front, a small low ponytail at the back, very thick bold black eyebrows, teal-framed rectangular glasses, light peach skin, white lab coat over a black vest, black tie and black slacks, standing at the back center with a hand on his chin and a small question mark; the Fruit Fly, a tiny expressive cartoon fruit fly researcher with a dark charcoal-black segmented insect body, large glossy red compound eyes, a retro dark blue helmet with a yellow-white center stripe and small round side bolts, colorful dangling cables in magenta, purple and blue curving from the back of the helmet, a tiny white lab coat over a black vest, translucent veined wings, six thin black legs with the front pair used like hands, on the left looking right and pointing at the fish with a suspicious look; JUPANBOT (AbaBot), a boxy beige retro CRT-monitor robot with a dark green screen face showing mint pixel eyes and mouth, a short antenna topped with a red-brown abacus bead, gray segmented arms and two small tank treads, on the right looking left with a sly grin, holding up a shiny abacus bead beside a small wooden abacus; Haru, a cute anime girl lab assistant, long straight pink hair with navy blue streaks including a thick navy streak down the center of the bangs, two round messy hair buns on top of the head, a small ahoge, big bright blue eyes, light peach skin, wearing a lavender hoodie with white drawstrings over a white t-shirt, under an open white knee-length lab coat, at the side holding a blank striped ledger with a calm small smile, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
 ```
 
 ### 3-3. `sc_rg_outro` — 대결 뒤 (선택)
@@ -99,7 +99,7 @@ detailed 16-bit SNES-era pixel art, limited palette, crisp pixels, dithering sha
 
 **프롬프트 (복사해서 사용)**
 ```
-detailed 16-bit SNES-era pixel art, limited palette, crisp pixels, dithering shading, thick dark outlines, cheerful comedy mood, consistent with the reference images, cozy night laboratory mood, purple light, soft magenta and green fluorescent accents, 3:2 landscape scene, medium brightness, the same weighing corner with the dial scale needle resting steadily and the travel suitcase neatly closed; the Fruit Fly researcher (same design as reference: red compound eyes, dark blue striped helmet with magenta purple blue cables, tiny white lab coat over black vest) in front and larger, arms crossed with a proud sparkle; JUPANBOT (same design as reference: boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes, abacus-bead antenna, gray segmented arms, two tank treads) beside him with drooping pixel eyes and pink blush marks on its screen, a sheepish accepting pose; the Professor (teal rectangular glasses, charcoal spiky hair with white streak, thick black eyebrows, white lab coat, black vest and tie) explaining with one index finger raised; Haru (long pink hair with navy streaks, two hair buns, lavender hoodie under open white lab coat) cheering with a raised fist, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
+16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights, cheerful comedy mood, consistent with the reference images, bright daytime laboratory mood, soft natural sunlight through large windows, clean white walls, light lavender, mint and pink accents, 3:2 landscape scene, medium brightness, the same weighing corner with the dial scale needle resting steadily and the travel suitcase neatly closed; the Fruit Fly researcher (same design as reference: red compound eyes, dark blue striped helmet with magenta purple blue cables, tiny white lab coat over black vest) in front and larger, arms crossed with a proud sparkle; JUPANBOT (same design as reference: boxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes, abacus-bead antenna, gray segmented arms, two tank treads) beside him with drooping pixel eyes and pink blush marks on its screen, a sheepish accepting pose; the Professor (teal rectangular glasses, charcoal spiky hair with white streak, thick black eyebrows, white lab coat, black vest and tie) explaining with one index finger raised; Haru (long pink hair with navy streaks, two hair buns, lavender hoodie under open white lab coat) cheering with a raised fist, no text, no letters, no numbers, no logos, no weapons, no cigarettes, no alcohol, no blood, no real brands
 ```
 
 ### 3-4. `thumb_rg`, `og_rg` — 직접 (완료)
@@ -164,8 +164,8 @@ python3 build_character_pack.py --ingest 받은폴더/ --plates bg_rg=F,sc_rg_he
   "season": "default",
   "duel": {"result": "F", "gap": 5.3652},
   "images": [
-    {"key":"bg_rg","plate":"F","size":[1920,720],"maker":"external","tool":"genspark","status":"requested","priority":"P1","slot":"hero-bg","fallback":"css","alt":"밤의 연구실 계량대, 저울 위 농어와 여행 가방이 놓여 있음"},
-    {"key":"sc_rg_hero","plate":"E","size":[1200,800],"maker":"external","tool":"genspark","status":"requested","priority":"P1","slot":"hero-stage","fallback":"composite","alt":"밤의 연구실에서 네 캐릭터가 저울 위 농어와 여행 가방을 바라보는 장면"},
+    {"key":"bg_rg","plate":"F","size":[1920,720],"maker":"external","tool":"genspark","status":"requested","priority":"P1","slot":"hero-bg","fallback":"css","alt":"낮의 연구실 계량대, 저울 위 농어와 여행 가방이 놓여 있음"},
+    {"key":"sc_rg_hero","plate":"E","size":[1200,800],"maker":"external","tool":"genspark","status":"requested","priority":"P1","slot":"hero-stage","fallback":"composite","alt":"낮의 연구실에서 네 캐릭터가 저울 위 농어와 여행 가방을 바라보는 장면"},
     {"key":"sc_rg_outro","plate":"E","size":[1200,800],"maker":"claude","status":"placed","priority":"P2","slot":"outro","fallback":"composite","external_optional":true,"alt":"대결을 마친 연구실, 초파리 연구원이 앞에서 팔짱을 끼고 주판봇이 머쓱하게 웃는 장면"},
     {"key":"thumb_rg","plate":"I","size":[600,400],"maker":"claude","status":"placed","priority":"P2","slot":"index-card","alt":"농어 무게로 배우는 릿지와 라쏘 목차 카드"},
     {"key":"og_rg","plate":"K","size":[1200,630],"maker":"claude","status":"placed","priority":"P3","slot":"og","alt":"농어 무게로 배우는 릿지와 라쏘 페이지 미리보기"},

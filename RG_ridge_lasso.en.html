@@ -53,14 +53,18 @@ body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
 
-/* 레이아웃: 밤의 연구실 대시보드 — 고정 상단 목차, 히어로 무대, 사다리 칸 5개가 세로로 이어지는 단일 칼럼(최대 1080px) */
+/* 레이아웃: 낮의 연구실 대시보드 — 고정 상단 목차, 히어로 무대, 실습 다섯 개가 세로로 이어지는 단일 칼럼(최대 1080px) */
+/* 낮의 연구실 (스킬 v1.15 8-2 토큰) */
 :root{
-  --bg:#13141f; --panel:#1c1e2d; --panel2:#25283a; --rule:#363a52;
-  --text:#eceaf3; --muted:#9d9bb8;
-  --stain:#d672d6; --gfp:#5ee39c; --eye:#f0604d; --amber:#f1b646; --info:#82b8ff;
-  --c-doc:#b07cff; --c-asst:#ff86b8; --c-fly:#ef5b5b; --c-robo:#57d0dc;
+  --bg:#ffffff; --panel:#f6f8fa; --panel2:#eef2f6; --rule:#d5dbe2;
+  --text:#16212b; --muted:#5b6874;
+  --stain:#9b3fb5; --gfp:#13733a; --eye:#c9302c; --amber:#a35c00; --info:#1e55c8;
+  --stain-soft:#f6ecfa; --gfp-soft:#e7f5ec; --eye-soft:#fcebea;
+  --amber-soft:#fdf3e1; --info-soft:#e6eefb;
+  --c-doc:#7a3fd6; --c-asst:#c42a6e; --c-fly:#c93030; --c-robo:#0b7a86;
+  --c-sia:#5a5a6e; --c-moa:#93651a;
   --font:"IBM Plex Sans","IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif;
-  color-scheme:dark;
+  color-scheme:light;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:70px}
@@ -80,7 +84,7 @@ a{color:var(--info)}
 
 /* 진행 막대 + 상단 내비 */
 #prog{position:fixed;left:0;top:0;height:3px;width:0;background:var(--gfp);z-index:60}
-nav.top{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(19,20,31,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+nav.top{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:rgba(255,255,255,.92);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 nav.top .wrap{display:flex;align-items:center;gap:14px;height:54px}
 nav.top .logo{font-weight:700;white-space:nowrap;display:flex;align-items:center;gap:8px;color:var(--text);text-decoration:none}
 nav.top .logo i{width:18px;height:20px;background:var(--gfp);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);display:inline-block}
@@ -91,21 +95,21 @@ nav.top .links a:hover,nav.top .links a.on{color:var(--text);background:var(--pa
 main{padding-top:calc(54px + env(safe-area-inset-top,0px))}
 
 /* 히어로 */
-header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule);background:radial-gradient(1200px 500px at 85% 0%,#2a1f4a 0%,transparent 60%),linear-gradient(180deg,#191a2b,#13141f)}
+header.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule);background:radial-gradient(1200px 500px at 85% 0%,var(--stain-soft) 0%,transparent 60%),linear-gradient(180deg,#fbfcfd,#ffffff)}
 .hero-bg{position:absolute;inset:0;pointer-events:none;opacity:.55;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='48' viewBox='0 0 28 48'%3E%3Cpath d='M14 0l14 8v16l-14 8L0 24V8z M14 32l14 8v16 M14 32L0 40v16' fill='none' stroke='%23d672d6' stroke-opacity='.18'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='48' viewBox='0 0 28 48'%3E%3Cpath d='M14 0l14 8v16l-14 8L0 24V8z M14 32l14 8v16 M14 32L0 40v16' fill='none' stroke='%239b3fb5' stroke-opacity='.14'/%3E%3C/svg%3E");
   -webkit-mask-image:radial-gradient(circle at 92% 8%,#000 0,transparent 55%);mask-image:radial-gradient(circle at 92% 8%,#000 0,transparent 55%)}
 .hero-in{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:28px;padding-block:44px 36px;align-items:center}
 .hero-in>*{min-width:0}
 .eyebrow{font-size:13px;letter-spacing:.08em;color:var(--gfp);font-weight:700}
 .hero-text{display:flex;flex-direction:column;gap:16px}
 .hero-text .q{font-size:clamp(18px,2.2vw,22px);color:var(--amber);font-weight:500}
-.hero-text .lead{color:#cfcde0;max-width:62ch}
-.stage{position:relative;border-radius:16px;border:1px solid var(--rule);background:linear-gradient(180deg,#221a3d 0%,#1a1830 62%,#2a2440 62%,#221f36 100%);aspect-ratio:3/2;max-width:100%;overflow:hidden}
+.hero-text .lead{color:var(--text);max-width:62ch}
+.stage{position:relative;border-radius:16px;border:1px solid var(--rule);background:linear-gradient(180deg,#eef5fc 0%,#f7f9fb 62%,#efe6d6 62%,#e6dac4 100%);aspect-ratio:3/2;max-width:100%;overflow:hidden}
 .stage canvas.pixelart{position:absolute;right:6%;top:8%;width:46%;height:auto;image-rendering:pixelated}
 .stage .actors{position:absolute;left:0;right:0;bottom:6%;display:flex;justify-content:space-around;align-items:flex-end;padding:0 4%}
-.stage .actors img{width:22%;max-width:96px;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 4px 0 rgba(0,0,0,.35))}
-.stage .lamp{position:absolute;left:8%;top:10%;width:30%;height:22%;border-radius:8px;background:repeating-linear-gradient(90deg,#2d2950 0 10px,#332e5a 10px 12px);box-shadow:0 0 30px rgba(87,208,220,.18) inset}
+.stage .actors img{width:22%;max-width:96px;aspect-ratio:1;object-fit:contain;filter:drop-shadow(0 3px 0 rgba(22,33,43,.12))}
+.stage .lamp{position:absolute;left:8%;top:10%;width:30%;height:22%;border-radius:8px;background:repeating-linear-gradient(90deg,#dcebfa 0 10px,#c3d6ea 10px 12px);border:2px solid #c3d6ea}
 .stage .tag{position:absolute;left:10px;bottom:8px;font-size:11px;color:var(--muted)}
 .dialog{display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0}
@@ -123,10 +127,10 @@ section.level>.wrap{display:flex;flex-direction:column;gap:22px}
 .sec-head .sub{color:var(--muted);max-width:70ch}
 .lvhead{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;align-items:center}
 .lvhead .sub{grid-column:2;display:flex;flex-wrap:wrap;gap:6px}
-.hexno{grid-row:span 2;width:62px;height:70px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--gfp);color:#0f2219;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:24px;line-height:1}
+.hexno{grid-row:span 2;width:62px;height:70px;clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%);background:var(--gfp);color:#ffffff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:700;font-size:24px;line-height:1}
 .hexno small{font-size:11px;font-weight:700;margin-top:3px}
 .lvtag{font-size:12.5px;padding:3px 10px;border-radius:99px;background:var(--panel2);color:var(--muted);border:1px solid var(--rule)}
-.lvtag.g{color:var(--gfp);border-color:rgba(94,227,156,.35)}
+.lvtag.g{color:var(--gfp);background:var(--gfp-soft);border-color:rgba(19,115,58,.35)}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .steps>div{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .steps b.n{font-size:13px;color:var(--amber)}
@@ -141,33 +145,33 @@ section.level>.wrap{display:flex;flex-direction:column;gap:22px}
 /* 패널·조작 */
 .panel{background:var(--panel);border:1px solid var(--rule);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:14px}
 .panel h3{font-size:16px;color:var(--info)}
-.cwrap{overflow-x:auto;border-radius:12px;background:#171827;border:1px solid var(--rule)}
+.cwrap{overflow-x:auto;border-radius:12px;background:#ffffff;border:1px solid var(--rule)}
 .cwrap canvas{display:block;width:100%}
 .cwrap canvas.wide{min-width:680px}
 .ctrl{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center}
 .group{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .glabel{font-size:13px;color:var(--muted)}
-.bt{font:inherit;font-size:14px;color:var(--text);background:var(--panel2);border:1px solid var(--rule);border-radius:10px;padding:7px 13px;cursor:pointer;min-height:36px}
+.bt{font:inherit;font-size:14px;color:var(--text);background:#ffffff;border:1px solid var(--rule);border-radius:10px;padding:7px 13px;cursor:pointer;min-height:36px}
 .bt:hover{border-color:var(--muted)}
-.bt.primary,.bt[aria-pressed="true"]{background:rgba(94,227,156,.14);border-color:var(--gfp);color:var(--gfp)}
+.bt.primary,.bt[aria-pressed="true"]{background:var(--gfp);border-color:var(--gfp);color:#ffffff}
 .val{font-variant-numeric:tabular-nums;font-weight:700;min-width:5ch;color:var(--amber)}
 input[type=range]{accent-color:var(--gfp);width:min(320px,100%)}
 .panel .kpis{grid-template-columns:repeat(4,1fr)}
-.eq{background:#171827;border:1px dashed var(--rule);border-radius:10px;padding:10px 14px;font-variant-numeric:tabular-nums;overflow-x:auto;white-space:nowrap;font-size:15px}
+.eq{background:#ffffff;border:1px dashed var(--rule);border-radius:10px;padding:10px 14px;font-variant-numeric:tabular-nums;overflow-x:auto;white-space:nowrap;font-size:15px}
 .eq b{color:var(--gfp);font-weight:700}.eq em{color:var(--stain);font-style:normal}.eq i{color:var(--amber);font-style:normal}
 .insight{display:flex;flex-direction:column;gap:6px}
 .insight p{padding:9px 12px;border-radius:10px;background:var(--panel2);border-left:3px solid var(--rule);font-size:15px}
 .insight p.g{border-color:var(--gfp)}.insight p.m{border-color:var(--stain)}.insight p.r{border-color:var(--eye)}.insight p.a{border-color:var(--amber)}
-.explain{background:rgba(241,182,70,.07);border:1px solid rgba(241,182,70,.35);border-radius:14px;padding:16px 18px}
+.explain{background:var(--amber-soft);border:1px solid rgba(163,92,0,.3);border-radius:14px;padding:16px 18px}
 .explain ol,.explain ul{margin:6px 0 0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
 .explain h4{color:var(--amber)}
-.explain .limit{margin-top:10px;color:#e7d3a8;font-size:15px}
+.explain .limit{margin-top:10px;color:#6e4100;font-size:15px}
 details.math{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 16px}
 details.math summary{cursor:pointer;color:var(--info);font-weight:500}
 details.math .body{margin-top:10px;display:flex;flex-direction:column;gap:8px;font-size:15px}
 .bridge{border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
-.bridge.gen{background:rgba(130,184,255,.08);border:1px solid rgba(130,184,255,.35)}
-.bridge.field{background:rgba(240,96,77,.07);border:1px solid rgba(240,96,77,.35)}
+.bridge.gen{background:var(--info-soft);border:1px solid rgba(30,85,200,.28)}
+.bridge.field{background:var(--eye-soft);border:1px solid rgba(201,48,44,.28)}
 .bridge h4{margin:0}.bridge.gen h4{color:var(--info)}.bridge.field h4{color:var(--eye)}
 .bridge .lim{font-size:13.5px;color:var(--muted)}
 .stampnote{font-size:12.5px;color:var(--amber)}
@@ -188,12 +192,12 @@ img.who{width:64px;height:64px;object-fit:contain;image-rendering:auto;backgroun
 
 /* 퀴즈 */
 .quiz{display:flex;flex-direction:column;gap:12px}
-.qi{background:rgba(130,184,255,.06);border:1px solid rgba(130,184,255,.3);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.qi{background:var(--info-soft);border:1px solid rgba(30,85,200,.25);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
 .qi .qq{font-weight:500}
 .qi .qp{color:var(--info);font-weight:700}
 .qi .opts{display:flex;flex-wrap:wrap;gap:8px}
-.qi .opts .bt.ok{border-color:var(--gfp);color:var(--gfp);background:rgba(94,227,156,.12)}
-.qi .opts .bt.no{border-color:var(--eye);color:var(--eye)}
+.qi .opts .bt.ok{border-color:var(--gfp);color:var(--gfp);background:var(--gfp-soft)}
+.qi .opts .bt.no{border-color:var(--eye);color:var(--eye);background:var(--eye-soft)}
 .qi .fb{font-size:14.5px}
 .qi .fb.ok{color:var(--gfp)}.qi .fb.no{color:var(--amber)}
 
@@ -211,7 +215,7 @@ img.who{width:64px;height:64px;object-fit:contain;image-rendering:auto;backgroun
 .guess{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .duel .bars{display:flex;flex-direction:column;gap:10px}
 .duel .bar{display:grid;grid-template-columns:110px 1fr 76px;gap:10px;align-items:center;font-size:14px}
-.duel .bar .track{height:22px;background:#171827;border-radius:6px;position:relative;overflow:hidden;border:1px solid var(--rule)}
+.duel .bar .track{height:22px;background:var(--panel2);border-radius:6px;position:relative;overflow:hidden;border:1px solid var(--rule)}
 .duel .bar .fill{position:absolute;top:0;bottom:0;border-radius:4px}
 .duel .bar .zero{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--muted)}
 .duel .after{display:none;flex-direction:column;gap:12px}
@@ -236,16 +240,16 @@ table.tb{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numer
 .summary{display:flex;flex-direction:column;gap:12px}
 
 /* 아웃트로 */
-.outro-stage{position:relative;border-radius:16px;border:1px solid var(--rule);background:linear-gradient(180deg,#221a3d 0%,#1a1830 66%,#2a2440 66%,#221f36 100%);aspect-ratio:16/6;min-height:180px;overflow:hidden}
+.outro-stage{position:relative;border-radius:16px;border:1px solid var(--rule);background:linear-gradient(180deg,#eef5fc 0%,#f7f9fb 66%,#efe6d6 66%,#e6dac4 100%);aspect-ratio:16/6;min-height:180px;overflow:hidden}
 .outro-stage .actors{position:absolute;left:0;right:0;bottom:6%;display:flex;justify-content:center;gap:5%;align-items:flex-end}
 .outro-stage .actors img{width:15%;max-width:120px;aspect-ratio:1;object-fit:contain}
 .outro-stage .actors img.win{width:19%;max-width:150px}
 
 /* 지식 색인 */
 .kgbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.kgbar input[type=search]{font:inherit;color:var(--text);background:var(--panel2);border:1px solid var(--rule);border-radius:10px;padding:8px 12px;flex:1;min-width:200px}
+.kgbar input[type=search]{font:inherit;color:var(--text);background:#ffffff;border:1px solid var(--rule);border-radius:10px;padding:8px 12px;flex:1;min-width:200px}
 .chip{font:inherit;font-size:13px;padding:4px 11px;border-radius:99px;border:1px solid var(--rule);background:var(--panel2);color:var(--muted);cursor:pointer}
-.chip[aria-pressed="true"]{color:var(--text);border-color:var(--muted)}
+.chip[aria-pressed="true"]{color:#ffffff;background:var(--gfp);border-color:var(--gfp)}
 .kgwrap{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .kgwrap>*{min-width:0}
 #kgList{display:flex;flex-direction:column;gap:8px;max-height:520px;overflow:auto;padding-right:4px}
@@ -253,7 +257,7 @@ table.tb{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numer
 .kgi.hl{border-color:var(--amber)}
 .kgi .t{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .kgi .ty{font-size:11.5px;padding:1px 8px;border-radius:99px;background:var(--panel2);color:var(--muted)}
-.kgi p{font-size:14px;color:#cfcde0}
+.kgi p{font-size:14px;color:var(--text)}
 .kgi a{font-size:13px}
 .flowchips{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:14px}
 .flowchips span{padding:4px 10px;border-radius:8px;background:var(--panel2)}
@@ -266,11 +270,11 @@ table.tb{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numer
 .ref{background:var(--panel);border:1px solid var(--rule);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
 .ref .badges{display:flex;flex-wrap:wrap;gap:6px}
 .badge{font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid var(--rule)}
-.badge.ok{color:var(--gfp);border-color:rgba(94,227,156,.4)}.badge.no{color:var(--amber);border-color:rgba(241,182,70,.45)}
+.badge.ok{color:var(--gfp);background:var(--gfp-soft);border-color:rgba(19,115,58,.35)}.badge.no{color:var(--amber);background:var(--amber-soft);border-color:rgba(163,92,0,.35)}
 .badge.role{color:var(--info)}
-.cite{background:#171827;border:1px solid var(--rule);border-radius:10px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:break-all;font-variant-numeric:tabular-nums}
+.cite{background:var(--panel2);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;font-size:14px;white-space:pre-wrap;word-break:break-all;font-variant-numeric:tabular-nums}
 .filebtns{display:flex;flex-wrap:wrap;gap:8px}
-textarea.peek{width:100%;min-height:180px;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;color:var(--text);background:#171827;border:1px solid var(--rule);border-radius:10px;padding:10px}
+textarea.peek{width:100%;min-height:180px;font:13px/1.5 ui-monospace,Menlo,Consolas,monospace;color:var(--text);background:#ffffff;border:1px solid var(--rule);border-radius:10px;padding:10px}
 
 /* 바닥글 */
 footer{padding-block:40px 80px;color:var(--muted);font-size:14px}
@@ -279,9 +283,9 @@ footer h3{color:var(--text);font-size:16px}
 
 /* 용어 말풍선·도우미 */
 .jt{border-bottom:1.5px dotted var(--amber);cursor:help}
-#tip{position:fixed;z-index:80;max-width:min(320px,calc(100vw - 32px));background:#0e0f18;border:1px solid var(--amber);border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.55;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+#tip{position:fixed;z-index:80;max-width:min(320px,calc(100vw - 32px));background:#ffffff;border:1px solid var(--amber);border-radius:12px;padding:10px 12px;font-size:14px;line-height:1.55;box-shadow:0 1px 2px rgba(22,33,43,.06)}
 #tip b{color:var(--amber)}#tip small{color:var(--muted);margin-left:6px}
-#study{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;gap:8px;align-items:center;background:rgba(28,30,45,.95);border:1px solid var(--rule);border-radius:99px;padding:6px 8px 6px 14px;font-size:13px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+#study{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:55;display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.96);border:1px solid var(--rule);border-radius:99px;padding:6px 8px 6px 14px;font-size:13px;box-shadow:0 1px 2px rgba(22,33,43,.06)}
 #study .bt{min-height:30px;padding:4px 10px;font-size:13px}
 
 @media (max-width:980px){.stage canvas.pixelart{opacity:.85}}
@@ -294,36 +298,36 @@ footer h3{color:var(--text);font-size:16px}
 /* 지시서 추가 요소 */
 nav.top .wrap{gap:10px}
 .lang-pick{display:flex;align-items:center;gap:4px;flex:none}
-.lang-sel{font:inherit;font-size:13px;color:var(--text);background:var(--panel2);border:1px solid var(--rule);border-radius:8px;padding:4px 6px;max-width:120px}
+.lang-sel{font:inherit;font-size:13px;color:var(--text);background:#ffffff;border:1px solid var(--rule);border-radius:8px;padding:4px 6px;max-width:120px}
 #langDock{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:56}
-#langBtn{border-radius:99px;background:rgba(28,30,45,.95);box-shadow:0 6px 20px rgba(0,0,0,.4)}
-#langMenu{position:absolute;right:0;bottom:calc(100% + 8px);background:#0e0f18;border:1px solid var(--rule);border-radius:12px;padding:6px;display:flex;flex-direction:column;min-width:160px;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+#langBtn{border-radius:99px;background:#ffffff;box-shadow:0 1px 2px rgba(22,33,43,.06)}
+#langMenu{position:absolute;right:0;bottom:calc(100% + 8px);background:#ffffff;border:1px solid var(--rule);border-radius:12px;padding:6px;display:flex;flex-direction:column;min-width:160px;box-shadow:0 1px 2px rgba(22,33,43,.06)}
 #langMenu[hidden]{display:none}
 #langMenu a{color:var(--text);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:14px}
 #langMenu a:hover{background:var(--panel2)}
 #langMenu a.on{color:var(--amber);font-weight:700}
 .byline{font-size:14px;color:var(--muted)}
-aside.prereq{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted);border-left:3px solid var(--info);padding:6px 12px;background:rgba(130,184,255,.06);border-radius:0 10px 10px 0}
+aside.prereq{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted);border-left:3px solid var(--info);padding:6px 12px;background:var(--info-soft);border-radius:0 10px 10px 0}
 aside.prereq b{color:var(--info)}
-.sysline{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--gfp);background:#0f1a15;border:1px solid rgba(94,227,156,.3);border-radius:10px;padding:10px 14px}
-.hexno.alpha{background:var(--info);color:#0e1830}
+.sysline{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:var(--gfp);background:var(--gfp-soft);border:1px solid rgba(19,115,58,.3);border-radius:10px;padding:10px 14px}
+.hexno.alpha{background:var(--info);color:#ffffff}
 ul.plain{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
-.nextq{background:rgba(214,114,214,.08);border:1px solid rgba(214,114,214,.35);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.nextq{background:var(--stain-soft);border:1px solid rgba(155,63,181,.3);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
 .nextq b{color:var(--stain)}
 .codepanel{background:var(--panel);border:1px solid var(--rule);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px}
 .cphead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:flex-start}
 .cphead>div:first-child{display:flex;flex-direction:column;gap:2px;min-width:0}
 .cphead span{font-size:13px;color:var(--muted)}
-pre.src,pre.out{margin:0;background:#11121b;border:1px solid var(--rule);border-radius:10px;padding:12px;overflow:auto;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;max-height:420px;word-break:normal;white-space:pre}
-pre.out{color:#cfe8da;max-height:260px}
-.tk-c{color:#8f8db0}.tk-s{color:#f1b646}.tk-n{color:#d672d6}.tk-k{color:#82b8ff}
+pre.src,pre.out{margin:0;background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:12px;overflow:auto;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;max-height:420px;word-break:normal;white-space:pre}
+pre.out{color:#1d4a2e;max-height:260px}
+.tk-c{color:#6a737d}.tk-s{color:#a35c00}.tk-n{color:#9b3fb5}.tk-k{color:#1e55c8}
 .codenote{display:flex;flex-direction:column;gap:6px;font-size:15px}
 figure.runshot{margin:0;display:flex;flex-direction:column;gap:6px}
 figure.runshot figcaption{font-size:13px;color:var(--muted)}
 .pcards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pcard{background:var(--panel);border:1px solid var(--rule);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .pcard .pw{font-size:14px;color:var(--info)}.pcard .ptip{font-size:14px;color:var(--muted)}
-.pcard pre.pbody{margin:0;white-space:pre-wrap;word-break:keep-all;font:13.5px/1.6 var(--font);background:#171827;border-radius:10px;padding:10px 12px}
+.pcard pre.pbody{margin:0;white-space:pre-wrap;word-break:keep-all;font:13.5px/1.6 var(--font);background:#ffffff;border:1px solid var(--rule);border-radius:10px;padding:10px 12px}
 ol.reflist{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;word-break:break-word}
 .pager{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .pager a.bt{text-decoration:none}
@@ -351,7 +355,7 @@ h1,h2,h3,h4,p,td,th,li,body{word-break:normal;overflow-wrap:anywhere}
 
 <main>
 <header class="hero" id="hero">
-  <div class="hero-bg" data-img="bg_rg" role="img" aria-label="A honeycomb pattern glowing faintly on the lab wall at night"></div>
+  <div class="hero-bg" data-img="bg_rg" role="img" aria-label="A honeycomb pattern showing faintly on the wall of the daytime lab"></div>
   <div class="wrap hero-in">
     <div class="hero-text">
       <span class="eyebrow">AI Lab Explainer · Regularized Regression · Hands-on Mission</span>
@@ -369,7 +373,7 @@ h1,h2,h3,h4,p,td,th,li,body{word-break:normal;overflow-wrap:anywhere}
       <aside class="prereq"><b>Good to read first</b><span>If linear regression is new to you, start with exercise 2 (basic regression) on this page. Earlier episodes are not linked yet.</span></aside>
     </div>
     <div>
-      <div class="stage" data-img="sc_rg_hero" role="img" aria-label="A scene in the lab at night: four characters look at a perch on a scale and a suitcase">
+      <div class="stage" data-img="sc_rg_hero" role="img" aria-label="A scene in the daytime lab: four characters look at a perch on a scale and a suitcase">
         <div class="lamp" aria-hidden="true"></div>
         <canvas class="pixelart" id="heroArt" width="96" height="72" aria-label="Pixel art of a perch on a scale and a suitcase"></canvas>
         <div class="actors">
@@ -411,22 +415,22 @@ h1,h2,h3,h4,p,td,th,li,body{word-break:normal;overflow-wrap:anywhere}
     <div><b class="n">Regularization finds the middle ground</b><p>Ridge and lasso add one condition: "fit the data, but keep the coefficients small." Instead of memorizing, the model learns to generalize.</p></div>
   </div>
   <div class="cwrap"><svg viewBox="0 0 760 170" width="760" style="display:block;min-width:680px;width:100%;height:auto" role="img" aria-label="Flow chart: 3 inputs, 55 features, coefficients and regularization, then a weight prediction">
-    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#9d9bb8"/></marker></defs>
-    <g font-family="IBM Plex Sans KR,IBM Plex Sans,Noto Sans SC,Noto Sans JP,system-ui,sans-serif" font-size="13" fill="#eceaf3">
-      <rect x="10" y="30" width="160" height="110" rx="12" fill="#1c1e2d" stroke="#f0604d"/>
-      <text x="90" y="56" text-anchor="middle" fill="#f0604d" font-weight="700">① Input</text>
-      <text x="90" y="82" text-anchor="middle">length · height · width</text><text x="90" y="104" text-anchor="middle" fill="#9d9bb8">3 (cm)</text>
-      <rect x="200" y="30" width="160" height="110" rx="12" fill="#1c1e2d" stroke="#d672d6"/>
-      <text x="280" y="56" text-anchor="middle" fill="#d672d6" font-weight="700">② Make features</text>
-      <text x="280" y="82" text-anchor="middle">length², length×height …</text><text x="280" y="104" text-anchor="middle" fill="#9d9bb8">55 at degree 5</text>
-      <rect x="390" y="30" width="180" height="110" rx="12" fill="#1c1e2d" stroke="#5ee39c"/>
-      <text x="480" y="56" text-anchor="middle" fill="#5ee39c" font-weight="700">③ Coefficients + regularization</text>
-      <text x="480" y="82" text-anchor="middle">one coefficient per feature</text><text x="480" y="104" text-anchor="middle" fill="#9d9bb8">ridge/lasso hold them</text>
-      <rect x="600" y="30" width="150" height="110" rx="12" fill="#1c1e2d" stroke="#82b8ff"/>
-      <text x="675" y="56" text-anchor="middle" fill="#82b8ff" font-weight="700">④ Output</text>
-      <text x="675" y="82" text-anchor="middle">weight (g)</text><text x="675" y="104" text-anchor="middle" fill="#9d9bb8">graded by test R²</text>
-      <path d="M172 85H196M362 85H386M572 85H596" stroke="#9d9bb8" stroke-width="2" marker-end="url(#ar)"/>
-      <text x="380" y="164" text-anchor="middle" fill="#f1b646" font-size="12">More features make coefficients explode easily</text>
+    <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5b6874"/></marker></defs>
+    <g font-family="IBM Plex Sans KR,IBM Plex Sans,Noto Sans SC,Noto Sans JP,system-ui,sans-serif" font-size="13" fill="#16212b">
+      <rect x="10" y="30" width="160" height="110" rx="12" fill="#f6f8fa" stroke="#c9302c"/>
+      <text x="90" y="56" text-anchor="middle" fill="#c9302c" font-weight="700">① Input</text>
+      <text x="90" y="82" text-anchor="middle">length · height · width</text><text x="90" y="104" text-anchor="middle" fill="#5b6874">3 (cm)</text>
+      <rect x="200" y="30" width="160" height="110" rx="12" fill="#f6f8fa" stroke="#9b3fb5"/>
+      <text x="280" y="56" text-anchor="middle" fill="#9b3fb5" font-weight="700">② Make features</text>
+      <text x="280" y="82" text-anchor="middle">length², length×height …</text><text x="280" y="104" text-anchor="middle" fill="#5b6874">55 at degree 5</text>
+      <rect x="390" y="30" width="180" height="110" rx="12" fill="#f6f8fa" stroke="#13733a"/>
+      <text x="480" y="56" text-anchor="middle" fill="#13733a" font-weight="700">③ Coefficients + regularization</text>
+      <text x="480" y="82" text-anchor="middle">one coefficient per feature</text><text x="480" y="104" text-anchor="middle" fill="#5b6874">ridge/lasso hold them</text>
+      <rect x="600" y="30" width="150" height="110" rx="12" fill="#f6f8fa" stroke="#1e55c8"/>
+      <text x="675" y="56" text-anchor="middle" fill="#1e55c8" font-weight="700">④ Output</text>
+      <text x="675" y="82" text-anchor="middle">weight (g)</text><text x="675" y="104" text-anchor="middle" fill="#5b6874">graded by test R²</text>
+      <path d="M172 85H196M362 85H386M572 85H596" stroke="#5b6874" stroke-width="2" marker-end="url(#ar)"/>
+      <text x="380" y="164" text-anchor="middle" fill="#a35c00" font-size="12">More features make coefficients explode easily</text>
     </g></svg></div>
   <p class="stampnote">Limits of the analogy: a student may forget the problems they memorized, but a model never forgets its training data. A model also has no intention to memorize. It just ends up that way while fitting the numbers.</p>
 </div>
@@ -916,7 +920,7 @@ h1,h2,h3,h4,p,td,th,li,body{word-break:normal;overflow-wrap:anywhere}
       <div class="legend" id="kgLegend"></div>
     </div>
   </div>
-  <h3>Ladder path</h3>
+  <h3>Learning order</h3>
   <div class="flowchips" id="kgPath"></div>
   <h3>Open questions</h3>
   <div id="kgQ" class="insight"></div>
@@ -1175,7 +1179,7 @@ function f3(v){return (v<0?'−':'')+Math.abs(v).toFixed(3)}
 function fmtA(a){return a>=1?String(Math.round(a*1000)/1000):(a>=0.01?a.toFixed(a<0.1?3:2).replace(/0+$/,'').replace(/\.$/,''):a.toPrecision(2))}
 function comma(v){return Math.round(v).toLocaleString('ko-KR')}
 var REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
-var COL={bg:'#171827',grid:'rgba(157,155,184,.08)',axis:'#363a52',text:'#eceaf3',muted:'#9d9bb8',stain:'#d672d6',gfp:'#5ee39c',eye:'#f0604d',amber:'#f1b646',info:'#82b8ff'};
+var COL={bg:'#ffffff',grid:'rgba(22,33,43,.05)',axis:'#d5dbe2',text:'#16212b',muted:'#5b6874',stain:'#9b3fb5',gfp:'#13733a',eye:'#c9302c',amber:'#a35c00',info:'#1e55c8'};
 var FONT='\"IBM Plex Sans\","IBM Plex Sans KR",system-ui,sans-serif';
 
 /* ===== 보이는 캔버스만 그리는 루프 ===== */
@@ -1195,7 +1199,7 @@ function fitText(c,t,x,y,maxW,size){var s=size; c.font=s+'px '+FONT; while(c.mea
 /* ===== 도장 ===== */
 function stamp(ctx,W,txt){ctx.save(); ctx.font='700 11px '+FONT;
   var tw=ctx.measureText(txt).width+16, x=Math.max(4,W-tw-8), y=8;
-  ctx.fillStyle='rgba(241,182,70,.14)'; ctx.strokeStyle='rgba(241,182,70,.7)';
+  ctx.fillStyle='rgba(163,92,0,.10)'; ctx.strokeStyle='rgba(163,92,0,.7)';
   ctx.beginPath(); ctx.roundRect?ctx.roundRect(x,y,tw,20,10):ctx.rect(x,y,tw,20); ctx.fill(); ctx.stroke();
   ctx.fillStyle='#f1b646'; ctx.textAlign='left'; ctx.fillText(txt,x+8,y+14); ctx.restore();}
 
@@ -1274,12 +1278,12 @@ var Gloss=(function(){var mode='core', made=[], tip=$('#tip'), cur=null;
 var QUIZ={
  lv1:[{q:'The test R² came out as −0.5. What does that mean?',o:['It got about half right','It is worse than just saying the average','Training is not finished'],a:1,why:'R² measures how much better the model is than a "model that only says the average." Below 0 means it is worse than that.',hint:'R² = 1 − (model error) / (error when only saying the average).'},
       {q:'If weight = 20·length − 400, what is the predicted weight of a 25 cm perch?',o:['100g','500g','−375g'],a:0,why:'20 × 25 − 400 = 100g. The coefficient 20 means "20 g per 1 cm of length."',hint:'Try computing coefficient × feature value + intercept.'}],
- lv2:[{q:'The degree was raised from 1 to 5. What happened to the training R² and the test R²?',o:['Both went up','Training went up, and test collapsed to −4.39','Both went down'],a:1,why:'Training rose from 0.956 → 0.9997, but test went 0.880 → −4.393. It memorized.',hint:'Set the bar chart in panel ② to degree 5 and look.'},
+ lv2:[{q:'The degree was raised from 1 to 5. What happened to the training R² and the test R²?',o:['Both went up','Training went up, and test collapsed to −4.39','Both went down'],a:1,why:'Training rose from 0.956 → 0.9997, but test went 0.880 → −4.393. It memorized.',hint:'Set the bar chart in exercise ② to degree 5 and look.'},
       {q:'If a coefficient is 387, how many grams does that one term change the prediction when length changes by 0.1 cm?',o:['3.87g','38.7g','387g'],a:1,why:'387 × 0.1 = 38.7g. A real perch changes by only about 1–2 g per 0.1 cm, so this is far too sensitive.',hint:'Coefficient × change.'}],
  lv3:[{q:'If the coefficients are (2, −3), what "coefficient size" does ridge see?',o:['−1','5','13'],a:2,why:'Square and add: 2² + (−3)² = 4 + 9 = 13.',hint:'Squaring removes the sign.'},
-      {q:'What happens if you make ridge\'s alpha larger?',o:['The suitcase gets smaller, so the coefficients shrink more','The suitcase gets bigger, so the coefficients grow','The number of features increases'],a:0,why:'alpha is the regularization strength. The larger it is, the harder it pushes the coefficients down; too large leads to underfitting.',hint:'Push the slider in panel ③ all the way to the right.'}],
+      {q:'What happens if you make ridge\'s alpha larger?',o:['The suitcase gets smaller, so the coefficients shrink more','The suitcase gets bigger, so the coefficients grow','The number of features increases'],a:0,why:'alpha is the regularization strength. The larger it is, the harder it pushes the coefficients down; too large leads to underfitting.',hint:'Push the slider in exercise ③ all the way to the right.'}],
  lv4:[{q:'If the coefficients are (2, −3), what "coefficient size" does lasso see?',o:['5','13','−1'],a:0,why:'Add the absolute values: |2| + |−3| = 5.',hint:'Drop the signs and add.'},
-      {q:'What is the biggest difference between lasso and ridge?',o:['It sets coefficients to exactly 0, dropping features','It does not need standardization','It has no alpha'],a:0,why:'Lasso sets less needed coefficients to 0. At alpha=1, only 8 of the 55 remain.',hint:'See what the gray dots in panel ④ are.'}],
+      {q:'What is the biggest difference between lasso and ridge?',o:['It sets coefficients to exactly 0, dropping features','It does not need standardization','It has no alpha'],a:0,why:'Lasso sets less needed coefficients to 0. At alpha=1, only 8 of the 55 remain.',hint:'See what the gray dots in exercise ④ are.'}],
  lv5:[{q:'Why shouldn\'t you choose alpha by the score on the 14 test perch?',o:['Because it is slow to compute','Because it amounts to memorizing the test set too, so the final grading is not fair','Because the test set is too small'],a:1,why:'Grading on the data you used for choosing inflates the score. Choose with cross-validation; grade with the sealed test set.',hint:'Think of the past-exam analogy.'},
       {q:'With lasso alpha=100, training and test R² both dropped to 0.91. What is this?',o:['overfitting','underfitting','Data leakage'],a:1,why:'When both scores are low and the gap is small, the model has become too simple: that is underfitting.',hint:'Check whether the gap between the two scores is small or large.'}]
 };
@@ -1305,7 +1309,7 @@ var Study=(function(){var solved={}, total=0;
   $('#stGloss').addEventListener('click',function(){var m=Gloss.cycle(); this.textContent='Underline: '+{core:'Key',all:'All',off:'Off'}[m];});
 })();
 
-/* KPI 칸·설명 칸 */
+/* KPI 상자·설명 상자 */
 function kpis(el,arr){el.innerHTML=arr.map(function(k){return '<div class="kpi '+k[0]+'"><b class="num">'+k[1]+'</b><span>'+k[2]+'</span></div>';}).join('');}
 function ins(el,arr){el.innerHTML=arr.map(function(p){return '<p class="'+p[0]+'">'+p[1]+'</p>';}).join('');}
 
@@ -1325,7 +1329,7 @@ function Duel(o){var root=$(o.el), shown=false, guess=null;
     var big=Math.abs(f-b)>=0.10;
     var M={F:['arms','sigh','e01','e10'],R:[big?'cry':'coffee','happy','e01','e10'],D:['coffee','meh','e13','e13'],X:['arms','blush','e24','e10']}[res];
     Cast.set(flyImg,'fly',M[0]); Cast.set(roboImg,'robo',M[1]); Cast.set(asstImg,'asst',M[2]); Cast.set(docImg,'doc',M[3]);
-    root.querySelector('.bars').innerHTML='<p class="glabel">'+r.metric+' (scale −5 to 1, vertical line = 0)</p>'+bar('Fruit Fly',f,'#ef5b5b')+bar('AbaBot',b,'#57d0dc');
+    root.querySelector('.bars').innerHTML='<p class="glabel">'+r.metric+' (scale −5 to 1, vertical line = 0)</p>'+bar('Fruit Fly',f,'#c93030')+bar('AbaBot',b,'#0b7a86');
     root.querySelector('.asst p').textContent=r.metric+': Fruit Fly side '+f3(f)+', AbaBot side '+f3(b)+'. Training R² was 0.989 and 0.9997.';
     var who={F:'Fruit Fly Researcher wins.',R:'AbaBot wins.',D:'This round is a draw.',X:'AbaBot is disqualified for breaking the rules.'}[res];
     root.querySelector('.verdict p').textContent=o.lesson+'. '+who;
@@ -1353,7 +1357,7 @@ function plotFit(cv,H,curve,o){var W=fit(cv,H), c=cv.getContext('2d'); o=o||{};
   c.save(); c.beginPath(); c.rect(46,14,W-60,H-44); c.clip();
   if(curve){c.strokeStyle=o.color||COL.stain; c.lineWidth=2.5; c.beginPath();
     curve.forEach(function(w,i){var x=xS(W,L[i]), y=yS(H,Math.max(-2000,Math.min(2500,w))); i?c.lineTo(x,y):c.moveTo(x,y);}); c.stroke();}
-  if(o.ghost){c.strokeStyle='rgba(240,96,77,.45)'; c.setLineDash([5,4]); c.lineWidth=1.5; c.beginPath();
+  if(o.ghost){c.strokeStyle='rgba(201,48,44,.45)'; c.setLineDash([5,4]); c.lineWidth=1.5; c.beginPath();
     o.ghost.forEach(function(w,i){var x=xS(W,L[i]), y=yS(H,Math.max(-2000,Math.min(2500,w))); i?c.lineTo(x,y):c.moveTo(x,y);}); c.stroke(); c.setLineDash([]);}
   if(o.showTr!==false){c.fillStyle=COL.gfp; TR.X.forEach(function(x,i){c.beginPath(); c.arc(xS(W,x[0]),yS(H,TR.y[i]),3.6,0,7); c.fill();});}
   if(o.showTe!==false){c.strokeStyle=COL.amber; c.lineWidth=2; TE.X.forEach(function(x,i){c.beginPath(); c.arc(xS(W,x[0]),yS(H,TE.y[i]),5,0,7); c.stroke();});}
@@ -1371,7 +1375,7 @@ function plotCoef(cv,H,coef,ghost){var W=fit(cv,H), c=cv.getContext('2d'); c.fil
     c.fillText((s<0?'−':'')+(t>=1e4?(t/1e4)+'0k':t),4,y+4);});});
   c.strokeStyle=COL.axis; c.beginPath(); c.moveTo(x0,mid); c.lineTo(W-10,mid); c.stroke();
   for(var i=0;i<n;i++){var x=x0+i*bw;
-    if(ghost){var g=hh(ghost[i]); c.fillStyle='rgba(240,96,77,.22)'; c.fillRect(x+1,Math.min(mid,mid-g),Math.max(1,bw-2),Math.abs(g));}
+    if(ghost){var g=hh(ghost[i]); c.fillStyle='rgba(201,48,44,.18)'; c.fillRect(x+1,Math.min(mid,mid-g),Math.max(1,bw-2),Math.abs(g));}
     if(coef[i]===0){c.fillStyle=COL.muted; c.beginPath(); c.arc(x+bw/2,mid,2.2,0,7); c.fill();}
     else{var h=hh(coef[i]); c.fillStyle=coef[i]>0?COL.gfp:COL.stain; c.fillRect(x+bw*0.2,Math.min(mid,mid-h),Math.max(1.5,bw*0.6),Math.max(1.5,Math.abs(h)));}}
   c.font='11px '+FONT; legend(c,[['Feat. 1 (length) → 55 (width⁵)',COL.muted],['Light red = unregularized coefs',COL.eye]],x0,H-6,W-10,-13);}
@@ -1431,7 +1435,7 @@ function makeScale(cv,getPred){var t=0, idx=0, H=190;
     [1,0,-1,-2,-3,-4,-5].forEach(function(v){c.beginPath(); c.moveTo(40,y(v)); c.lineTo(W-10,y(v)); c.stroke(); c.fillText(v,16,y(v)+4);});
     c.strokeStyle=COL.axis; c.beginPath(); c.moveTo(40,y(0)); c.lineTo(W-10,y(0)); c.stroke();
     D.deg.forEach(function(d,i){var x=48+i*gw, bw=gw*0.32;
-      if(d.d===deg){c.fillStyle='rgba(241,182,70,.10)'; c.fillRect(x-6,10,gw-4,H-34);}
+      if(d.d===deg){c.fillStyle='rgba(163,92,0,.08)'; c.fillRect(x-6,10,gw-4,H-34);}
       c.fillStyle=COL.gfp; c.fillRect(x,Math.min(y(0),y(d.tr)),bw,Math.abs(y(d.tr)-y(0)));
       c.fillStyle=d.te<0?COL.eye:COL.amber; c.fillRect(x+bw+4,Math.min(y(0),y(d.te)),bw,Math.max(2,Math.abs(y(d.te)-y(0))));
       c.fillStyle=COL.text; c.fillText('d'+d.d+' · '+d.n+'​',x,H-8);});
@@ -1502,11 +1506,11 @@ window.__redraw4=regPanel(4,'lasso',12);
   $('#m5r').addEventListener('click',function(){setM('ridge');}); $('#m5l').addEventListener('click',function(){setM('lasso');});
   addMod(cv,function(dt){if(dt===0) draw();}); draw(); window.__redraw5=draw;
   // 5조각 애니메이션
-  var cb=$('#c5b'), t=0, k=0, sizes=[9,9,8,8,8], fc=['#5ee39c','#82b8ff','#d672d6','#f1b646','#ef9a8a'];
+  var cb=$('#c5b'), t=0, k=0, sizes=[9,9,8,8,8], fc=['#13733a','#1e55c8','#9b3fb5','#a35c00','#c42a6e'];
   function drawB(dt){var H=170, W=fit(cb,H), c=cb.getContext('2d'); if(!REDUCE){t+=dt; if(t>1.3){t=0; k=(k+1)%5;}}
     c.fillStyle=COL.bg; c.fillRect(0,0,W,H); var cw=Math.min(16,(W-40)/46), x=20, idx=0;
     c.font='11px '+FONT;
-    sizes.forEach(function(s,f){for(var j=0;j<s;j++){var on=f===k; c.fillStyle=on?'#f1b646':'rgba(94,227,156,.55)';
+    sizes.forEach(function(s,f){for(var j=0;j<s;j++){var on=f===k; c.fillStyle=on?'#e0a020':'rgba(19,115,58,.45)';
         c.fillRect(x,50,cw-3,46); x+=cw; idx++;} c.fillStyle=f===k?COL.amber:COL.muted; c.fillText('Fold '+(f+1),x-s*cw/2-18,112); x+=10;});
     c.fillStyle=COL.text; c.font='12px '+FONT; c.fillText((k+1)+' of 5: grade on the yellow fold of '+sizes[k]+' perch, train on the other '+(42-sizes[k])+' perch',20,32);
     c.fillStyle=COL.muted; c.fillText('The average of the five scores is the score for that alpha. The 14 test perch are not in this picture.',20,140);
@@ -1526,8 +1530,8 @@ window.__redraw4=regPanel(4,'lasso',12);
   // 여행 가방
   px(66,34,26,26,'#d672d6'); px(66,34,26,2,'#e48cff'); px(74,28,10,2,'#9d9bb8'); px(74,28,2,6,'#9d9bb8'); px(82,28,2,6,'#9d9bb8');
   px(66,46,26,2,'#8a3f8a'); px(70,58,3,4,'#25283a'); px(85,58,3,4,'#25283a');
-  // 형광 점
-  px(4,6,2,2,'#5ee39c'); px(88,8,2,2,'#5ee39c'); px(56,4,1,1,'#f1b646'); px(60,16,1,1,'#82b8ff');})();
+  // 햇빛 반짝임
+  px(4,6,2,2,'#f2c14e'); px(88,8,2,2,'#f2c14e'); px(56,4,1,1,'#f2c14e'); px(60,16,1,1,'#7fb4e8');})();
 
 /* 대결 연결 */
 Duel({el:'#duelBox',run:function(){return {fly:D.final.ridge[1],robo:D.final.lr[1],metric:'R² on the 14 sealed test perch',foul:false};},
@@ -1540,7 +1544,7 @@ var rt=null; window.addEventListener('resize',function(){clearTimeout(rt); rt=se
 /* ===== 지식 색인 (O1) ===== */
 var KG=JSON.parse($('#kg-raw').textContent), REF=JSON.parse($('#refs-csl').textContent), META=JSON.parse($('#page-meta').textContent);
 var TYK={Concept:'Concept',Method:'Method',Task:'Task',Metric:'Metric',Claim:'Claim',Term:'Term',Question:'Question',Analogy:'Analogy',Limitation:'Limitation',Dataset:'Data',Work:'Reference',Simulation:'Simulation',QuizItem:'Quiz'};
-var TYC={Concept:'#d672d6',Method:'#5ee39c',Task:'#82b8ff',Metric:'#82b8ff',Claim:'#f1b646',Term:'#e48cff',Question:'#f0604d',Analogy:'#ef9a8a',Limitation:'#f0604d',Dataset:'#7fd1a8',Work:'#9d9bb8',Simulation:'#57d0dc',QuizItem:'#6c6a88'};
+var TYC={Concept:'#9b3fb5',Method:'#13733a',Task:'#1e55c8',Metric:'#1e55c8',Claim:'#a35c00',Term:'#7a3fd6',Question:'#c9302c',Analogy:'#c42a6e',Limitation:'#c9302c',Dataset:'#0b7a86',Work:'#5b6874',Simulation:'#0b7a86',QuizItem:'#5a5a6e'};
 var KGI=(function(){var on={}, q='', hl=null, byId={}, pos={};
   KG.nodes.forEach(function(n){byId[n.id]=n;});
   var types=Object.keys(TYK).filter(function(t){return KG.nodes.some(function(n){return n.type===t;});});
@@ -1572,9 +1576,9 @@ var KGI=(function(){var on={}, q='', hl=null, byId={}, pos={};
   function draw(){var H=360, W=fit(cv,H), c=cv.getContext('2d'); c.fillStyle=COL.bg; c.fillRect(0,0,W,H); scr=[];
     function P(id){return {x:W/2+pos[id].x*(W/2-24), y:H/2+pos[id].y*(H/2-20)};}
     KG.edges.forEach(function(e){if(!visible(byId[e.s])||!visible(byId[e.o])) return; var a=P(e.s), b=P(e.o);
-      var strong=e.p==='lab:prerequisiteOf'||e.p==='lab:addressedBy'; c.strokeStyle=strong?'rgba(94,227,156,.45)':'rgba(157,155,184,.18)'; c.lineWidth=strong?1.6:1;
+      var strong=e.p==='lab:prerequisiteOf'||e.p==='lab:addressedBy'; c.strokeStyle=strong?'rgba(19,115,58,.45)':'rgba(22,33,43,.14)'; c.lineWidth=strong?1.6:1;
       c.beginPath(); c.moveTo(a.x,a.y); c.lineTo(b.x,b.y); c.stroke();
-      if(strong){var an=Math.atan2(b.y-a.y,b.x-a.x); c.fillStyle='rgba(94,227,156,.7)'; c.beginPath(); c.moveTo(b.x-Math.cos(an)*7,b.y-Math.sin(an)*7); c.lineTo(b.x-Math.cos(an-0.4)*13,b.y-Math.sin(an-0.4)*13); c.lineTo(b.x-Math.cos(an+0.4)*13,b.y-Math.sin(an+0.4)*13); c.fill();}});
+      if(strong){var an=Math.atan2(b.y-a.y,b.x-a.x); c.fillStyle='rgba(19,115,58,.7)'; c.beginPath(); c.moveTo(b.x-Math.cos(an)*7,b.y-Math.sin(an)*7); c.lineTo(b.x-Math.cos(an-0.4)*13,b.y-Math.sin(an-0.4)*13); c.lineTo(b.x-Math.cos(an+0.4)*13,b.y-Math.sin(an+0.4)*13); c.fill();}});
     c.font='10.5px '+FONT;
     KG.nodes.forEach(function(n){if(!visible(n)) return; var p=P(n.id), rr=n.type==='Method'?6.5:4.5; scr.push({id:n.id,x:p.x,y:p.y});
       c.fillStyle=TYC[n.type]; c.beginPath(); c.arc(p.x,p.y,rr,0,7); c.fill();
@@ -1584,7 +1588,7 @@ var KGI=(function(){var on={}, q='', hl=null, byId={}, pos={};
   cv.addEventListener('pointerdown',function(e){var r=cv.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top, best=null, bd=400;
     scr.forEach(function(s){var d=(s.x-x)*(s.x-x)+(s.y-y)*(s.y-y); if(d<bd){bd=d; best=s;}});
     if(best){hl=best.id; render(); draw(); var el=document.getElementById('kgi-'+best.id.replace(/[^a-z0-9]/gi,'-')); if(el){var L=$('#kgList'); L.scrollTop=el.offsetTop-L.offsetTop-8;}}});
-  // 사다리 경로
+  // 배우는 순서
   var chain=['lab:method/linear-regression','lab:limitation/straight-line','lab:method/polynomial-features','lab:limitation/memorizes','lab:method/ridge','lab:limitation/keeps-all','lab:method/lasso','lab:limitation/alpha-choice','lab:method/cross-validation','lab:limitation/cv-vs-test'];
   $('#kgPath').innerHTML=chain.map(function(id,i){var n=byId[id]; return (i?'<b aria-hidden="true">→</b>':'')+'<span class="'+(n.type==='Limitation'?'lm':'')+'"></span>';}).join('');
   $$('#kgPath span').forEach(function(s,i){s.textContent=byId[chain[i]].label.ko;});
@@ -1671,8 +1675,8 @@ function readme(M,g,R){var todo=todoItems();
 function todoItems(){var t=[];
   REF.forEach(function(r){var v=r.lab.verified, miss=Object.keys(v).filter(function(k){return !v[k];});
     if(miss.length) t.push(r.id+': '+miss.map(function(k){return {doi:'DOI',pages:'pages',year:'year',authors:'authors',venue:'venue',title:'title'}[k]||k;}).join(', ')+' unverified'+(r.lab.note?' ('+r.lab.note+')':''));});
-  if(!META.license) t.push('Page license (blank)'); if(!META.url) t.push('Page public URL (blank)'); if(!META.number) t.push('Series number (blank)');
-  t.push('External ontology IDs: Wikidata matches for all '+KG.nodes.length+' nodes unverified (blank)'); return t;}
+  if(!META.license) t.push('Page license (empty)'); if(!META.url) t.push('Page public URL (empty)'); if(!META.number) t.push('Series number (empty)');
+  t.push('External ontology IDs: Wikidata matches for all '+KG.nodes.length+' nodes unverified (empty)'); return t;}
 function buildPackage(scope){var g=filterScope(KG,scope);
   var files=[{name:'page_meta.json',text:JSON.stringify(META,null,2)},{name:'kg.json',text:JSON.stringify(g,null,2)},{name:'kg.jsonld',text:JSON.stringify(toJsonLd(g),null,2)},
     {name:'kg.ttl',text:toTurtle(g)},{name:'nodes.csv',text:'﻿'+toNodesCsv(g)},{name:'edges.csv',text:'﻿'+toEdgesCsv(g)},
