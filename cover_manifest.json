@@ -92,7 +92,7 @@
    "robot": "jupanbot-v2",
    "prompt_en": "Website series cover illustration for a table-of-contents page, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n(if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\nBright daytime laboratory mood, soft natural sunlight through large windows, clean white walls, light lavender, mint and pink accents.\nScene: a wide view of the bright daytime laboratory, clean white lab benches with colorful flasks, large windows with a clear blue sky and sunlight, and a huge chart board covering the back wall.\nThe chart board has no text, no numbers and no tick marks at all: a few dozen small dots rise in a gentle upward curve, and two lines pass over them.\nOne is a jagged red line that zigzags wildly up and down to touch every single dot; the other is a calm green line that glides smoothly through the middle of the dots.\nOn the bench below the board: a large dial scale with one green-striped perch fish lying on its tray (the dial has no numbers), and a half-open travel suitcase with some items packed tightly and a few items set aside.\nAll four characters together:\nchibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, standing at the back center pointing a pointer stick at the spot where the two lines split apart;\ngirl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, at one side smiling and holding up a scoreboard with two blank panels;\nanthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, looking up suspiciously at the jagged red line and holding a magnifying glass;\nboxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and mouth, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, on the right facing left, looking up at the chart while hugging a wooden abacus.\nHeight order: scientist tallest, then the girl researcher, then the robot, the fruit fly is about 0.4 of the scientist's height.\nVisual metaphor: memorizing every point versus finding the smooth pattern.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom); keep the bottom-left corner plain, bright and simple; the light falls on the chart board where the two lines split.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no tick marks, no logos, no coins, no banknotes, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
    "source_of": null,
-   "status": "redraw"
+   "status": "ok"
   },
   {
    "id": "cover_rg",
@@ -186,9 +186,9 @@
     "fly",
     "jupanbot"
    ],
-   "robot": "jupanbot-v1",
+   "robot": "jupanbot-v2",
    "prompt_en": null,
-   "source_of": "hero_rg",
+   "source_of": "cover_index",
    "status": "ok"
   },
   {
@@ -205,11 +205,11 @@
     "fly",
     "jupanbot"
    ],
-   "robot": "jupanbot-v1",
+   "robot": "jupanbot-v2",
    "prompt_en": null,
-   "source_of": "hero_rg",
+   "source_of": "cover_index",
    "status": "ok"
   }
  ],
- "updated": "2026-11-07"
+ "updated": "2026-11-21"
 }
