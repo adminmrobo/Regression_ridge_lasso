@@ -97,7 +97,6 @@
   {
    "id": "cover_rg",
    "role": "cover",
-   "path": "cover_rg.webp",
    "size": [
     1600,
     900
@@ -110,8 +109,10 @@
    ],
    "robot": "jupanbot-v2",
    "prompt_en": "Website top cover illustration, wide 16:9.\nMatch the art style, proportions and colors of the attached reference images exactly\n(if there are no reference images: 16-bit RPG style pixel art, bold dark outline, 2–3 tone shading, small highlights).\nBright daytime laboratory mood, soft natural sunlight through large windows, clean white walls, light lavender, mint and pink accents.\nScene: a close view of a weighing corner inside the bright daytime lab; a large dial scale on a sturdy bench with one green-striped perch fish lying on its tray, the needle still swinging (the dial has no numbers).\nTwo travel suitcases stand on either side of the scale: the left one is packed full with every item squeezed and compressed to fit; the right one holds only a few essential items, and the other items are taken out and set neatly on the floor beside it.\nAll four characters together:\nchibi scientist, thin teal rectangular glasses, spiky black hair with one white streak, small ponytail at the back, white lab coat over black vest and tie, standing at the back center pointing from one suitcase to the other as he explains;\ngirl researcher, long pink hair with two round buns and a navy streak, blue eyes, white lab coat over lavender hoodie, jeans, at one side holding a blank striped ledger and a pen, watching the needle;\nanthropomorphic fruit fly researcher, black body, big red compound eyes, blue helmet with a gold stripe and pink and blue cables, white lab coat over a black vest, black gloves, transparent wings, on the left facing right, lifting one of the set-aside items to inspect it;\nboxy beige retro CRT-monitor robot, dark green screen face with mint pixel eyes and a confident grin, short antenna topped with a red-brown abacus bead, gray segmented arms, two small tank treads, on the right facing left, hugging a big box as if to pack even more.\nHeight order: scientist tallest, then the girl researcher, then the robot, the fruit fly is about 0.4 of the scientist's height.\nVisual metaphor: squeeze everything in versus keep only what matters.\nComposition: keep every face and hand inside the central safe area (12% margin left and right, 10% top, 18% bottom); keep the bottom-left corner plain, bright and simple; the light falls on the perch on the scale between the two suitcases.\nMood: curious, friendly rivalry, the moment before the result.\nNo text, no letters, no numbers, no logos, no coins, no banknotes, no weapons, no cigarettes, no alcohol, no blood, no real brands.",
-   "source_of": null,
-   "status": "redraw"
+   "source_of": "cover_index",
+   "status": "ok",
+   "embedded_in": "RG_ridge_lasso.html",
+   "key": "#cover"
   },
   {
    "id": "hero_rg",
